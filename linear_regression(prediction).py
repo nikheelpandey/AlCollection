@@ -62,7 +62,7 @@ df['Forecast'] = np.nan
 
 
 last_date = df.iloc[-1].name
-last_unix = last_date.timestamp()
+last_unix = last_date.timestamp()  ##This is to update the time and it screws with the graph... suggest solution if you have any.
 one_day = 86400
 next_unix = last_unix + one_day
 
@@ -71,7 +71,7 @@ for i in forecast_set:
     next_unix += 86400
     df.loc[next_date] = [np.nan for _ in range(len(df.columns)-1)]+[i]
 
-df['Adj. Close'].plot()
+df['Close'].plot()
 df['Forecast'].plot()
 plt.legend(loc=4)
 plt.xlabel('Date')
